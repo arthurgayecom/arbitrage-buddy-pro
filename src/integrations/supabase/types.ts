@@ -14,7 +14,235 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          alert_type: string
+          created_at: string
+          id: string
+          is_read: boolean | null
+          message: string
+          opportunity_id: string | null
+          sent_via: string[] | null
+          user_id: string
+        }
+        Insert: {
+          alert_type: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message: string
+          opportunity_id?: string | null
+          sent_via?: string[] | null
+          user_id: string
+        }
+        Update: {
+          alert_type?: string
+          created_at?: string
+          id?: string
+          is_read?: boolean | null
+          message?: string
+          opportunity_id?: string | null
+          sent_via?: string[] | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "arbitrage_opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      arbitrage_opportunities: {
+        Row: {
+          discovered_at: string
+          expected_value: number | null
+          expires_at: string | null
+          id: string
+          kalshi_price: number | null
+          kalshi_url: string | null
+          market_name: string
+          metadata: Json | null
+          polymarket_price: number | null
+          polymarket_url: string | null
+          profit_percentage: number
+          status: string | null
+          win_probability: number | null
+        }
+        Insert: {
+          discovered_at?: string
+          expected_value?: number | null
+          expires_at?: string | null
+          id?: string
+          kalshi_price?: number | null
+          kalshi_url?: string | null
+          market_name: string
+          metadata?: Json | null
+          polymarket_price?: number | null
+          polymarket_url?: string | null
+          profit_percentage: number
+          status?: string | null
+          win_probability?: number | null
+        }
+        Update: {
+          discovered_at?: string
+          expected_value?: number | null
+          expires_at?: string | null
+          id?: string
+          kalshi_price?: number | null
+          kalshi_url?: string | null
+          market_name?: string
+          metadata?: Json | null
+          polymarket_price?: number | null
+          polymarket_url?: string | null
+          profit_percentage?: number
+          status?: string | null
+          win_probability?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          auto_execute: boolean | null
+          created_at: string
+          discord_webhook_url: string | null
+          display_name: string | null
+          email: string | null
+          email_alerts: boolean | null
+          id: string
+          phantom_wallet_address: string | null
+          profit_threshold: number | null
+          simulation_mode: boolean | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          auto_execute?: boolean | null
+          created_at?: string
+          discord_webhook_url?: string | null
+          display_name?: string | null
+          email?: string | null
+          email_alerts?: boolean | null
+          id?: string
+          phantom_wallet_address?: string | null
+          profit_threshold?: number | null
+          simulation_mode?: boolean | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          auto_execute?: boolean | null
+          created_at?: string
+          discord_webhook_url?: string | null
+          display_name?: string | null
+          email?: string | null
+          email_alerts?: boolean | null
+          id?: string
+          phantom_wallet_address?: string | null
+          profit_threshold?: number | null
+          simulation_mode?: boolean | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      trades: {
+        Row: {
+          amount: number
+          confirmed_at: string | null
+          executed_at: string
+          id: string
+          is_simulation: boolean | null
+          market_name: string
+          metadata: Json | null
+          opportunity_id: string | null
+          platform: string
+          price: number
+          profit_loss: number | null
+          side: string
+          status: string | null
+          transaction_hash: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          confirmed_at?: string | null
+          executed_at?: string
+          id?: string
+          is_simulation?: boolean | null
+          market_name: string
+          metadata?: Json | null
+          opportunity_id?: string | null
+          platform: string
+          price: number
+          profit_loss?: number | null
+          side: string
+          status?: string | null
+          transaction_hash?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          confirmed_at?: string | null
+          executed_at?: string
+          id?: string
+          is_simulation?: boolean | null
+          market_name?: string
+          metadata?: Json | null
+          opportunity_id?: string | null
+          platform?: string
+          price?: number
+          profit_loss?: number | null
+          side?: string
+          status?: string | null
+          transaction_hash?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trades_opportunity_id_fkey"
+            columns: ["opportunity_id"]
+            isOneToOne: false
+            referencedRelation: "arbitrage_opportunities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_api_credentials: {
+        Row: {
+          created_at: string
+          credential_type: string
+          encrypted_value: string
+          id: string
+          is_active: boolean | null
+          platform: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          credential_type: string
+          encrypted_value: string
+          id?: string
+          is_active?: boolean | null
+          platform: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          credential_type?: string
+          encrypted_value?: string
+          id?: string
+          is_active?: boolean | null
+          platform?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
