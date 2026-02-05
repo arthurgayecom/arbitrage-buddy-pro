@@ -2,7 +2,7 @@ import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Settings, Zap, Shield } from 'lucide-react';
+import { SlidersHorizontal, Zap, Shield } from 'lucide-react';
 
 interface ProfitThresholdSliderProps {
   threshold: number;
@@ -25,8 +25,8 @@ export function ProfitThresholdSlider({
     <Card className="border-border/50">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center gap-2">
-          <Settings className="w-5 h-5" />
-          Trading Controls
+          <SlidersHorizontal className="w-5 h-5" />
+          Filter Settings
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
