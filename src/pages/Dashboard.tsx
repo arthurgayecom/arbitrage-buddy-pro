@@ -6,6 +6,8 @@ import { OpportunityTable } from '@/components/dashboard/OpportunityTable';
 import { ProfitThresholdSlider } from '@/components/dashboard/ProfitThresholdSlider';
 import { WalletCard } from '@/components/dashboard/WalletCard';
 import { TradeHistoryTable } from '@/components/dashboard/TradeHistoryTable';
+import { ArbitrageFinder } from '@/components/dashboard/ArbitrageFinder';
+import { AIAnalyzer } from '@/components/dashboard/AIAnalyzer';
 import { useArbitrageOpportunities, ArbitrageOpportunity } from '@/hooks/useArbitrageOpportunities';
 import { useTrades } from '@/hooks/useTrades';
 import { useProfile } from '@/hooks/useProfile';
@@ -132,6 +134,8 @@ export default function Dashboard() {
             <Tabs defaultValue="opportunities" className="w-full">
               <TabsList>
                 <TabsTrigger value="opportunities">Opportunities</TabsTrigger>
+              <TabsTrigger value="arbitrage">Arbitrage Finder</TabsTrigger>
+              <TabsTrigger value="ai">AI Analyzer</TabsTrigger>
                 <TabsTrigger value="history">Trade History</TabsTrigger>
               </TabsList>
               
@@ -155,6 +159,14 @@ export default function Dashboard() {
                   </CardContent>
                 </Card>
               </TabsContent>
+          
+          <TabsContent value="arbitrage" className="mt-4">
+            <ArbitrageFinder />
+          </TabsContent>
+          
+          <TabsContent value="ai" className="mt-4">
+            <AIAnalyzer />
+          </TabsContent>
               
               <TabsContent value="history" className="mt-4">
                 <Card className="border-border/50">
